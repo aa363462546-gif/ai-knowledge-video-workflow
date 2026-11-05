@@ -41,7 +41,7 @@
 ### 1. 克隆项目并检查环境
 
 ```sh
-git clone https://github.com/<你的仓库路径>/ai-knowledge-video-workflow.git
+git clone https://github.com/aa363462546-gif/ai-knowledge-video-workflow.git
 cd ai-knowledge-video-workflow
 
 # 运行依赖检测（严格遵循先检查再安装原则）
