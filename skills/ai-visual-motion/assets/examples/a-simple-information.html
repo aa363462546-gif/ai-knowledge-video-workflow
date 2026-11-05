@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A · 简单信息的排版取舍</title>
+  <style>
+    :root { color-scheme: light; --ink:#1e292d; --muted:#667171; --blue:#315f71; --line:#d8dfdc; --paper:#f3f2ed; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; line-height:1.65; }
+    main { max-width:1180px; margin:auto; padding:64px 40px 34px; }
+    .eyebrow { display:flex; align-items:center; gap:12px; margin:0 0 18px; color:var(--blue); font-size:12px; font-weight:700; letter-spacing:.13em; }
+    .eyebrow span { display:grid; place-items:center; width:28px; height:28px; background:var(--blue); color:white; border-radius:50%; letter-spacing:0; }
+    h1 { max-width:800px; margin:0; font-size:clamp(30px,4vw,46px); line-height:1.25; letter-spacing:-.035em; font-weight:700; }
+    .intro { max-width:730px; margin:20px 0 28px; font-size:17px; color:var(--muted); }
+    .source { padding:16px 20px; border-left:3px solid var(--blue); background:#e8eeeb; font-size:15px; }
+    .source strong { display:block; margin-bottom:3px; color:var(--blue); font-size:11px; letter-spacing:.08em; }
+    .variants { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin:36px 0 32px; }
+    .variant-heading { display:flex; align-items:baseline; gap:10px; margin-bottom:12px; }
+    .variant-heading .index { color:var(--blue); font-size:12px; font-weight:700; }
+    h2 { margin:0; font-size:19px; font-weight:650; letter-spacing:-.02em; }
+    .canvas { min-height:470px; padding:42px 38px 36px; border:1px solid var(--line); border-radius:18px; background:#fffefa; }
+    .canvas-label { margin:0 0 9px; font-size:11px; color:var(--muted); letter-spacing:.08em; }
+    h3 { margin:0; font-size:34px; line-height:1.25; letter-spacing:-.04em; }
+    .canvas-deck { margin:10px 0 29px; color:var(--muted); font-size:14px; }
+    .steps { padding:0; margin:0; list-style:none; display:grid; gap:19px; }
+    .steps li { display:flex; align-items:center; gap:17px; position:relative; min-height:57px; padding:10px 18px 10px 10px; border:1px solid #cedbdc; border-radius:50px; background:#eef3f1; }
+    .steps li:not(:last-child)::after { content:"↓"; position:absolute; top:57px; left:27px; height:19px; line-height:18px; color:#859b9d; font-size:16px; }
+    .step-number { display:grid; place-items:center; flex:0 0 35px; height:35px; border-radius:50%; background:var(--blue); color:#fff; font-size:12px; font-weight:700; }
+    .step-label { font-size:20px; line-height:1.4; font-weight:600; }
+    .plain-group { margin:37px 0 0; padding:0; list-style:none; }
+    .plain-group li { padding:16px 0; border-top:1px solid var(--line); font-size:23px; line-height:1.45; font-weight:500; }
+    .plain-group li:last-child { border-bottom:1px solid var(--line); }
+    .group-tail { margin:19px 0 0; color:var(--muted); font-size:12px; }
+    .reading { margin:14px 0 0; font-size:14px; color:var(--muted); }
+    .reading strong { color:var(--ink); font-weight:600; }
+    .counterexample { display:grid; grid-template-columns:1fr 1.12fr; gap:30px; align-items:center; padding:27px 30px; border:1px solid #ddcec5; border-radius:14px; background:#f6eee7; }
+    .counterexample .small-label { margin:0 0 7px; font-size:11px; font-weight:700; color:#925e45; letter-spacing:.06em; }
+    .counterexample h2 { font-size:18px; }
+    .counterexample p { margin:10px 0 0; color:#6f6158; font-size:13px; }
+    .counterexample svg { width:100%; height:auto; display:block; }
+    .counterexample svg text { font-family:inherit; }
+    .decision { margin:24px 0 0; padding-top:22px; border-top:1px solid var(--line); font-size:15px; }
+    .decision strong { color:var(--blue); }
+    footer { margin-top:38px; color:#7a8381; font-size:11px; line-height:1.9; }
+    @media(max-width:760px) { main { padding:35px 22px 26px; } .variants { grid-template-columns:1fr; gap:30px; } .canvas { min-height:440px; padding:32px 28px; } .counterexample { grid-template-columns:1fr; padding:23px; gap:18px; } h3 { font-size:32px; } }
+    @media(prefers-reduced-motion:reduce) { * { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow"><span>A</span> 排版取舍 · 简单信息</p>
+    <h1>顺序清楚了，<br>编号还需要多醒目？</h1>
+    <p class="intro">两版保留同一段口播的先后关系。这里改变的是视觉强调：编号带路，或让文字与阅读顺序直接组织内容。</p>
+    <div class="source"><strong>两版共用的演示文案</strong>先收集资料，再按主题归类，最后统一文件命名。</div>
+  </header>
+  <!-- 这是排版判断示例，不是固定模板。层级、排列、形状都可自由改变；不能按关键词机械映射为某种构图。 -->
+  <section class="variants" aria-label="同一文案的两种表达">
+    <article>
+      <div class="variant-heading"><span class="index">01</span><h2>需要强调先后</h2></div>
+      <div class="canvas">
+        <p class="canvas-label">一次资料整理的操作顺序</p>
+        <h3>整理资料</h3>
+        <p class="canvas-deck">从收集到命名，依次完成。</p>
+        <ol class="steps">
+          <li><span class="step-number" aria-hidden="true">01</span><span class="step-label">收集资料</span></li>
+          <li><span class="step-number" aria-hidden="true">02</span><span class="step-label">按主题归类</span></li>
+          <li><span class="step-number" aria-hidden="true">03</span><span class="step-label">统一文件命名</span></li>
+        </ol>
+      </div>
+      <p class="reading"><strong>先看到路径。</strong>纵向编号、连续的轻箭头，把注意力带向下一步。适合材料确实要求按顺序操作时。</p>
+    </article>
+    <article>
+      <div class="variant-heading"><span class="index">02</span><h2>顺序明确，减少编号强调</h2></div>
+      <div class="canvas">
+        <p class="canvas-label">相同顺序，更安静的标记</p>
+        <h3>整理资料</h3>
+        <p class="canvas-deck">按从上到下的阅读顺序，依次完成。</p>
+        <ol class="plain-group">
+          <li>收集资料</li>
+          <li>按主题归类</li>
+          <li>统一文件命名</li>
+        </ol>
+        <p class="group-tail">保留原文顺序，不另设路径标记。</p>
+      </div>
+      <p class="reading"><strong>先看到动作。</strong>保持从上到下的原有顺序，减少编号和容器的视觉重量；如果需要反复引用“第几步”，左侧编号会更有帮助。</p>
+    </article>
+  </section>
+  <aside class="counterexample" aria-labelledby="counter-title">
+    <div>
+      <p class="small-label">一个反例 · 凭空增加关系</p>
+      <h2 id="counter-title">材料没有分支，却画出了判断和审批。</h2>
+      <p>演示文案只说三件事。加上“是否重要”“审批”，会让读者以为这些也是原有要求。</p>
+    </div>
+    <svg viewBox="0 0 480 148" role="img" aria-label="不合适的例子：资料被接到是否重要的判断，再分成审批与归档；这些分支并未在文案中提供。">
+      <defs><marker id="arrow-a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#b18d77"/></marker></defs>
+      <g fill="none" stroke="#b18d77" stroke-width="1.5" marker-end="url(#arrow-a)"><path d="M95 74H139"/><path d="M272 74H299V35H344"/><path d="M299 74V113H344"/></g>
+      <rect x="10" y="52" width="85" height="44" rx="8" fill="#fdf9f4" stroke="#cdb7a8"/>
+      <path d="M205 20L273 74L205 128L137 74Z" fill="#fdf9f4" stroke="#c2957c"/>
+      <rect x="347" y="13" width="110" height="44" rx="8" fill="#fdf9f4" stroke="#cdb7a8"/>
+      <rect x="347" y="91" width="110" height="44" rx="8" fill="#fdf9f4" stroke="#cdb7a8"/>
+      <g fill="#765d4e" font-size="13" text-anchor="middle"><text x="52" y="79">资料</text><text x="205" y="79">是否重要？</text><text x="402" y="40">进入审批</text><text x="402" y="118">直接归档</text></g>
+      <circle cx="270" cy="23" r="10" fill="#a2664c"/><path d="M266 19L274 27M274 19L266 27" stroke="#fff" stroke-width="1.6"/>
+    </svg>
+  </aside>
+  <p class="decision"><strong>选择依据是内容中的真实关系。</strong>如果原材料确实包含条件、分支或回路，流程图仍然是合适的表达；这里的问题是额外编造关系。</p>
+  <footer>本例字号、边距、形状与颜色只是两次局部试排，可随内容与画幅调整。<br>使用系统字体与 fallback；跨平台字体未锁定。</footer>
+</main>
+</body>
+</html>

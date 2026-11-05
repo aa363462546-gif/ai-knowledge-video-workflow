@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B · 双方比较的组织方式</title>
+  <style>
+    :root { color-scheme:light; --ink:#232c2b; --muted:#69716b; --paper:#f3f2ed; --line:#d9dfd7; --green:#496750; --sand:#8c6b44; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; line-height:1.65; }
+    main { max-width:1180px; margin:auto; padding:64px 40px 34px; }
+    .eyebrow { display:flex; align-items:center; gap:12px; margin:0 0 18px; color:var(--green); font-size:12px; font-weight:700; letter-spacing:.13em; }
+    .eyebrow span { display:grid; place-items:center; width:28px; height:28px; background:var(--green); color:#fff; border-radius:50%; letter-spacing:0; }
+    h1 { max-width:840px; margin:0; font-size:clamp(30px,4vw,46px); line-height:1.25; letter-spacing:-.035em; }
+    .intro { max-width:735px; margin:20px 0 25px; font-size:17px; color:var(--muted); }
+    .fiction { display:inline-block; padding:6px 10px; border:1px solid #ccd6ca; border-radius:5px; font-size:11px; color:var(--green); background:#eaf0e7; }
+    section { margin-top:42px; }
+    .section-heading { display:flex; align-items:baseline; gap:12px; margin-bottom:9px; }
+    .index { font-size:12px; font-weight:700; color:var(--green); }
+    h2 { margin:0; font-size:21px; line-height:1.4; font-weight:650; letter-spacing:-.02em; }
+    .section-deck { margin:0 0 20px; font-size:14px; color:var(--muted); }
+    .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:15px; background:#fffefa; }
+    /* 整张表共用一套 Grid 行轨道。任意单元格变长，所在比较行一起增高。 */
+    .comparison-grid { display:grid; grid-template-columns:minmax(135px,.65fr) repeat(2,minmax(0,1.5fr)); min-width:650px; }
+    .comparison-row { display:contents; }
+    .cell { padding:22px 25px; border-top:1px solid var(--line); font-size:14px; overflow-wrap:anywhere; }
+    .cell + .cell { border-left:1px solid var(--line); }
+    .head { padding-top:25px; padding-bottom:25px; border-top:0; }
+    .dimension { color:var(--muted); font-size:12px; font-weight:600; background:#f6f7f1; }
+    .head.dimension { display:flex; align-items:end; }
+    .method-a { background:#edf2e9; }
+    .method-b { background:#f3eee4; }
+    .method-name { display:block; margin-bottom:4px; font-size:26px; line-height:1.3; font-weight:650; letter-spacing:-.03em; }
+    .method-a .method-name { color:var(--green); }
+    .method-b .method-name { color:var(--sand); }
+    .method-deck { font-size:12px; color:var(--muted); }
+    .cell p { margin:0; }
+    .table-caption { display:flex; gap:10px; align-items:baseline; margin:13px 0 0; color:var(--muted); font-size:12px; }
+    .table-caption strong { color:var(--green); white-space:nowrap; font-weight:650; }
+    .focus { display:grid; grid-template-columns:minmax(0,1.85fr) minmax(0,1fr); gap:22px; align-items:stretch; }
+    .focus-main { border:1px solid #cfdacb; border-radius:16px; background:#e8eee2; padding:34px; }
+    .kicker { margin:0 0 12px; font-size:11px; font-weight:650; color:var(--green); letter-spacing:.06em; }
+    .focus-main h3 { max-width:480px; margin:0 0 14px; font-size:31px; line-height:1.35; letter-spacing:-.035em; }
+    .focus-main .explanation { margin:0; max-width:460px; color:#61705e; font-size:14px; }
+    .topic { margin-top:26px; padding:22px; border:1px solid #ced8c7; border-radius:10px; background:#fcfdf7; }
+    .topic-heading { display:flex; align-items:center; gap:9px; margin:0 0 16px; font-size:17px; font-weight:650; }
+    .topic-heading::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--green); }
+    .note { display:grid; grid-template-columns:54px 1fr; gap:13px; align-items:start; padding:13px 0; border-top:1px solid #e0e5da; }
+    .note time { padding-top:2px; color:#7a8574; font-size:11px; font-variant-numeric:tabular-nums; }
+    .note p { margin:0; font-size:14px; line-height:1.7; }
+    .other-topic { margin:14px 0 0; color:#718069; font-size:11px; }
+    .focus-aside { padding:28px 25px; background:#fcfaf4; border:1px solid var(--line); border-radius:16px; }
+    .focus-aside h3 { margin:0 0 6px; color:var(--sand); font-size:21px; line-height:1.4; }
+    .aside-deck { margin:0 0 25px; color:var(--muted); font-size:12px; }
+    .timeline { list-style:none; margin:0 0 0 4px; padding:0 0 0 19px; border-left:1px solid #d5c8b6; }
+    .timeline li { position:relative; padding:0 0 24px; }
+    .timeline li:last-child { padding-bottom:0; }
+    .timeline li::before { content:""; position:absolute; top:6px; left:-23px; width:7px; height:7px; border-radius:50%; background:#a7977e; }
+    .timeline time { display:block; margin-bottom:4px; color:#93846d; font-size:11px; font-variant-numeric:tabular-nums; }
+    .timeline b { display:block; margin-bottom:3px; font-size:13px; font-weight:650; }
+    .timeline p { margin:0; color:#737168; font-size:12px; line-height:1.7; }
+    .focus-note { margin:16px 0 0; padding-left:14px; border-left:2px solid #a9b99f; color:var(--muted); font-size:13px; }
+    .focus-note strong { color:var(--ink); font-weight:600; }
+    footer { margin-top:38px; padding-top:22px; border-top:1px solid var(--line); color:#7a8381; font-size:11px; line-height:1.9; }
+    @media(max-width:760px) { main { padding:35px 22px 26px; } section { margin-top:34px; } .focus { grid-template-columns:1fr; } .focus-main { padding:27px 24px; } .focus-main h3 { font-size:27px; } .focus-aside { padding:25px; } .cell { padding:19px 20px; } .table-caption { display:block; } .table-caption strong { margin-right:7px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow"><span>B</span> 排版取舍 · 双方比较</p>
+    <h1>逐项看差异，还是<br>集中回答一个问题？</h1>
+    <p class="intro">比较的任务不同，版面可以不同。先把维度对齐，适合仔细核对；把一个对象放大，适合解释当前关注点。</p>
+    <p class="fiction">虚构教学内容 · 两种笔记方式均为本例设定，不代表真实产品</p>
+  </header>
+  <!-- 可自由改变层级、比例、方向与细节。这是两种组织思路，不是可套数据的组件库，也不能按关键词固定映射。 -->
+  <section aria-labelledby="rows-title">
+    <div class="section-heading"><span class="index">01</span><h2 id="rows-title">需要逐项核对：让双方共用比较行</h2></div>
+    <p class="section-deck">每一行只讨论一个维度。文字有长有短，行高由该行实际内容共同决定。</p>
+    <div class="table-wrap" tabindex="0" aria-label="两种虚构笔记方式的比较，窄屏可横向滚动">
+      <div class="comparison-grid" role="table" aria-label="主题索引与时间记录比较">
+        <div class="comparison-row" role="row">
+          <div class="cell head dimension" role="columnheader">比较维度</div>
+          <div class="cell head method-a" role="columnheader"><span class="method-name">主题索引</span><span class="method-deck">先沿着话题找内容</span></div>
+          <div class="cell head method-b" role="columnheader"><span class="method-name">时间记录</span><span class="method-deck">先沿着日期回看经历</span></div>
+        </div>
+        <div class="comparison-row" role="row">
+          <div class="cell dimension" role="rowheader">组织依据</div>
+          <div class="cell" role="cell"><p>主题与关键词。把有关“读书”“旅行”“工作方法”的条目放在相应主题下。</p></div>
+          <div class="cell" role="cell"><p>日期。每次记录沿时间顺序追加。</p></div>
+        </div>
+        <div class="comparison-row" role="row">
+          <div class="cell dimension" role="rowheader">寻找方式</div>
+          <div class="cell" role="cell"><p>先选主题，再从相关条目中找线索。</p></div>
+          <div class="cell" role="cell"><p>回想大致发生时间，再浏览那几天的记录；如果忘了日期，可能需要来回翻看。</p></div>
+        </div>
+        <div class="comparison-row" role="row">
+          <div class="cell dimension" role="rowheader">本例中的任务</div>
+          <div class="cell" role="cell"><p>整理跨越几个月、分散出现的同一话题。</p></div>
+          <div class="cell" role="cell"><p>复盘某一天的过程。</p></div>
+        </div>
+        <div class="comparison-row" role="row">
+          <div class="cell dimension" role="rowheader">维护习惯</div>
+          <div class="cell" role="cell"><p>新记录需要选一个主题；主题重叠时，可以保留多个索引入口。</p></div>
+          <div class="cell" role="cell"><p>先记下日期与内容，后续按时间查看。</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="table-caption"><strong>看横向关系</strong><span>一整张 CSS Grid 共用行轨道，避免双方各排一列后，长段文字把同一维度挤到不同高度。</span></p>
+  </section>
+  <section aria-labelledby="focus-title">
+    <div class="section-heading"><span class="index">02</span><h2 id="focus-title">只解释一个维度：把当前关注点放大</h2></div>
+    <p class="section-deck">此处只问：同一主题散在不同月份，怎么一起回看？下方使用同一组虚构记录。</p>
+    <div class="focus">
+      <article class="focus-main">
+        <p class="kicker">当前关注 · 按主题聚合</p>
+        <h3>让不同月份的<br>“读书”记录出现在一起。</h3>
+        <p class="explanation">这里把主题索引放大，方便看清聚合后的内容。日期仍保留在每条记录旁。</p>
+        <div class="topic">
+          <p class="topic-heading">读书</p>
+          <div class="note"><time datetime="2026-03-12">03.12</time><p>做摘录时，顺手记下自己的疑问。</p></div>
+          <div class="note"><time datetime="2026-05-18">05.18</time><p>重读时，对照上次留下的问题。</p></div>
+        </div>
+        <p class="other-topic">其他主题：旅行 · 1 条记录</p>
+      </article>
+      <article class="focus-aside">
+        <p class="kicker">同组记录 · 按时间查看</p>
+        <h3>时间记录</h3>
+        <p class="aside-deck">话题随记录日期依次出现。</p>
+        <ol class="timeline">
+          <li><time datetime="2026-03-12">03.12</time><b>读书</b><p>做摘录时，顺手记下自己的疑问。</p></li>
+          <li><time datetime="2026-04-06">04.06</time><b>旅行</b><p>把路线与预算分开记录。</p></li>
+          <li><time datetime="2026-05-18">05.18</time><b>读书</b><p>重读时，对照上次留下的问题。</p></li>
+        </ol>
+      </article>
+    </div>
+    <p class="focus-note"><strong>面积在表达“现在重点讲什么”。</strong>这种非对称构图会弱化另一侧细节。如果要精确逐项比较、检查原文或核对完整性，应使用上面的共享行布局；面积大小也不代表能力评分。</p>
+  </section>
+  <footer>本例列宽、字号、边距与面积比例只是局部试排值，可按真实材料重新安排。<br>使用系统字体与 fallback；跨平台字体未锁定。窄屏保留比较行，表格区域可横向滚动。</footer>
+</main>
+</body>
+</html>

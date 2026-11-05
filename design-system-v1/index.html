@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>视觉设计系统 · 第一版预览</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="preview.css">
+</head>
+<body>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#top"><i class="brand-dot" aria-hidden="true"></i>视觉设计系统 <span class="version">V1.0</span></a>
+    <nav aria-label="规范章节"><a href="#foundations">字体与配色</a><a href="#components">信息组件</a><a href="#data">数据</a><a href="#diagrams">流程关系</a></nav>
+  </header>
+  <main class="wrap" id="top">
+    <section class="cover" aria-labelledby="cover-title">
+      <div>
+        <h1 id="cover-title">统一视觉，<br><span class="accent">自由表达。</span></h1>
+        <p class="cover-description">为财经、科技、商业与知识讲解，<br>建立清晰、温和而有分量的视觉语言。</p>
+        <p class="cover-meta"><span>固定语言，不固定构图</span><span>第一版 · 待视觉验收</span></p>
+      </div>
+      <div class="cover-graphic" aria-label="中文、英文、数字与几何的统一视觉示意">
+        <div class="specimen-kicker"><span>同一种语言，多种表达</span><span>VISUAL LANGUAGE</span></div>
+        <div class="glyphs">Aa <span>中</span> 123</div>
+        <div class="graphic-bottom"><p class="graphic-caption">清楚的字形<br>柔和的几何</p><div class="shape-family" aria-hidden="true"><i></i><i></i><i></i></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="foundations" aria-labelledby="foundation-title">
+      <div class="section-heading"><h2 id="foundation-title"><span>01</span>基础语言</h2><p>Typography & Color</p></div>
+      <div class="foundations-grid">
+        <article class="font-panel" aria-label="A 字体与字号层级">
+          <div class="font-intro"><div><h3>思源黑体</h3><p>中文 · Source Han Sans SC</p></div><div><div class="latin-name">Inter</div><p>英文与数字 · 0123456789</p></div></div>
+          <div class="type-row"><div class="type-label"><b>主标题</b>44 / 800</div><p class="type-title">把关键结论讲清楚</p></div>
+          <div class="type-row"><div class="type-label"><b>次级标题</b>28 / 700</div><p class="type-heading">让证据形成结构</p></div>
+          <div class="type-row"><div class="type-label"><b>正文</b>20 / 400</div><p class="type-body">清晰呈现问题、关系与变化，<br>让每一段信息都有自己的位置。</p></div>
+          <div class="type-row"><div class="type-label"><b>辅助说明</b>16 / 400</div><p class="type-note">补充必要语境，不抢走主体的注意力。</p></div>
+          <div class="numeric-specimen"><strong>1,280.50</strong><span>等宽数字 · 清楚对齐</span></div>
+        </article>
+        <article aria-label="B 完整配色体系">
+          <div class="palette-intro"><h3>暖白打底，陶红点题。</h3><p>近黑承载内容，柔和彩色区分信息。</p></div>
+          <div class="palette">
+            <div class="swatch" style="--swatch:var(--color-paper)"><div class="swatch-color"></div><strong>暖白</strong><code>#F7F6F2</code><small>主背景</small></div>
+            <div class="swatch" style="--swatch:var(--color-ink)"><div class="swatch-color"></div><strong>近黑</strong><code>#171717</code><small>主体文字</small></div>
+            <div class="swatch" style="--swatch:var(--color-accent)"><div class="swatch-color"></div><strong>陶红</strong><code>#C44D36</code><small>重点与结论</small></div>
+            <div class="swatch" style="--swatch:var(--color-gray)"><div class="swatch-color"></div><strong>中性灰</strong><code>#9CA3AF</code><small>对照数据</small></div>
+            <div class="swatch" style="--swatch:var(--color-beige)"><div class="swatch-color"></div><strong>米色</strong><code>#E8E1D9</code><small>中性分组</small></div>
+            <div class="swatch" style="--swatch:var(--color-pink)"><div class="swatch-color"></div><strong>浅粉</strong><code>#FAD9D4</code><small>步骤与提醒</small></div>
+            <div class="swatch" style="--swatch:var(--color-blue)"><div class="swatch-color"></div><strong>浅蓝</strong><code>#A7C7E7</code><small>分类与信息</small></div>
+          </div>
+          <p class="palette-note">彩色是信息线索，不是页面底色。<br>小字号重点使用深陶红，浅灰不承担正文。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="components" aria-labelledby="components-title">
+      <div class="section-heading"><h2 id="components-title"><span>02</span>信息组件</h2><p>Steps, Pills & Comparison</p></div>
+      <div class="two-col">
+        <article class="panel" aria-label="C 彩色胶囊与编号步骤">
+          <div class="panel-top"><h3 class="section-pill">步骤与胶囊</h3></div>
+          <h4 class="panel-title">实现目标的<br>三个关键步骤</h4>
+          <ol class="steps">
+            <li class="step"><span class="step-number tone-accent tactile">1</span><strong>明确问题</strong><p>找到真正需要解决的核心问题</p></li>
+            <li class="step"><span class="step-number tone-pink tactile">2</span><strong>分析选项</strong><p>比较不同方案的收益与代价</p></li>
+            <li class="step"><span class="step-number tone-blue tactile">3</span><strong>做出决策</strong><p>根据证据选择下一步行动</p></li>
+          </ol>
+          <div class="chips" aria-label="分类胶囊示意"><span class="chip tone-beige">商业观察</span><span class="chip tone-pink">关键观点</span><span class="chip tone-blue">科技解读</span><span class="chip chip-outline">研究方法</span></div>
+          <p class="component-note">编号、标题与解释各司其职；色彩只做必要区分。</p>
+        </article>
+        <article class="panel" aria-label="D 双方对比模块">
+          <div class="panel-top"><h3 class="section-pill">双方对比</h3></div>
+          <h4 class="panel-title">让区别一目了然</h4>
+          <p class="panel-description">对齐比较维度，再突出需要关注的一方。</p>
+          <div class="comparison">
+            <section class="comparison-card" aria-label="方案 A 虚构示例"><h4>方案 A</h4><dl><div><dt>处理时间</dt><dd>40 分钟</dd></div><div><dt>操作步骤</dt><dd>6 步</dd></div><div><dt>每次成本</dt><dd>¥180</dd></div><div><dt>核对方式</dt><dd>逐项核对</dd></div></dl></section>
+            <span class="versus" aria-hidden="true">VS</span>
+            <section class="comparison-card featured" aria-label="方案 B 虚构示例"><h4>方案 B</h4><dl><div><dt>处理时间</dt><dd>25 分钟</dd></div><div><dt>操作步骤</dt><dd>4 步</dd></div><div><dt>每次成本</dt><dd>¥120</dd></div><div><dt>核对方式</dt><dd>集中核对</dd></div></dl></section>
+          </div>
+          <p class="component-note">虚构示例 · 仅演示比较方式，不代表真实产品表现。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="data" aria-labelledby="data-title">
+      <div class="section-heading"><h2 id="data-title"><span>03</span>数据表达</h2><p>Charts & Metrics</p></div>
+      <article class="panel data-panel" aria-label="E 数据图表与指标模块">
+        <div class="panel-top"><h3 class="section-pill">柱状图、趋势线与关键数字</h3></div>
+        <div class="data-header"><h4 class="panel-title">从变化中，看见重点</h4><p class="sample-label">虚构示例数据 · 2021—2024 · 单位：万</p></div>
+        <div class="data-body">
+          <div>
+            <svg class="chart" viewBox="0 0 800 360" role="img" aria-labelledby="chart-title chart-desc">
+              <title id="chart-title">四年示例数据柱状图与同一数列的趋势线</title><desc id="chart-desc">2021 年 12 万，2022 年 28 万，2023 年 52 万，2024 年 86 万。纵轴从零开始。虚构数据。</desc>
+              <g class="gridline"><path d="M52 300H785M52 235H785M52 170H785M52 105H785M52 40H785"/></g>
+              <g class="axis-label" text-anchor="end"><text x="37" y="306">0</text><text x="37" y="241">25</text><text x="37" y="176">50</text><text x="37" y="111">75</text><text x="37" y="46">100</text></g>
+              <rect class="bar-base" x="97" y="268.8" width="98" height="31.2" rx="3"/><rect class="bar-base" x="281" y="227.2" width="98" height="72.8" rx="3"/><rect class="bar-base" x="465" y="164.8" width="98" height="135.2" rx="3"/><rect class="bar-focus" x="649" y="76.4" width="98" height="223.6" rx="3"/>
+              <path class="series" d="M146 268.8L330 227.2L514 164.8L698 76.4"/>
+              <g class="point"><circle cx="146" cy="268.8" r="4"/><circle cx="330" cy="227.2" r="4"/><circle cx="514" cy="164.8" r="4"/><circle cx="698" cy="76.4" r="4"/></g>
+              <g class="value-label" text-anchor="middle"><text x="146" y="250">12</text><text x="330" y="208">28</text><text x="514" y="145">52</text><text x="698" y="57">86</text></g>
+              <g class="tick" text-anchor="middle"><text x="146" y="334">2021</text><text x="330" y="334">2022</text><text x="514" y="334">2023</text><text x="698" y="334">2024</text></g>
+            </svg>
+            <div class="legend" aria-label="图例"><span><i></i>往年数值</span><span><i class="focus"></i>当前重点</span><span><i class="line"></i>同一数列趋势</span></div>
+          </div>
+          <aside class="metric" aria-label="示例关键指标"><p class="metric-label">2024 年 · 示例数值</p><p class="metric-value">86<span>万</span></p><p class="metric-change">+65.4%<span>较 2023 年增加 34 万</span></p><p class="data-note">基于 52 万 → 86 万计算</p></aside>
+        </div>
+        <p class="data-note">线与柱使用同一纵轴；陶红表示本次讲述的重点，不预设涨跌含义。</p>
+      </article>
+    </section>
+
+    <section class="section" id="diagrams" aria-labelledby="diagrams-title">
+      <div class="section-heading"><h2 id="diagrams-title"><span>04</span>流程与关系</h2><p>Process & Relationships</p></div>
+      <div class="two-col">
+        <article class="panel" aria-label="F 圆形流程模块">
+          <div class="panel-top"><h3 class="section-pill">圆形流程</h3></div>
+          <h4 class="panel-title">从问题，到解决方案</h4>
+          <p class="panel-description">四个阶段构成循环；验证结果回到下一次观察。</p>
+          <svg class="diagram" viewBox="0 0 600 440" role="img" aria-labelledby="flow-title flow-desc">
+            <title id="flow-title">四阶段圆形节点流程</title><desc id="flow-desc">观察问题到分析原因，再到制定方案、执行验证，最后回到观察问题。</desc>
+            <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L6 4L1 7" fill="none" stroke="var(--color-secondary)" stroke-width="1.5"/></marker></defs>
+            <g class="connector" marker-end="url(#flow-arrow)"><path d="M226 104H370"/><path d="M442 178V264"/><path d="M370 336H226"/><path d="M154 264V178"/></g>
+            <circle class="node" cx="154" cy="104" r="66" fill="var(--color-beige)"/><circle class="node" cx="442" cy="104" r="66" fill="var(--color-pink)"/><circle class="node" cx="442" cy="336" r="66" fill="var(--color-blue)"/><circle class="node" cx="154" cy="336" r="66" fill="var(--color-accent)"/>
+            <g text-anchor="middle"><text class="node-num" x="154" y="96">01</text><text class="node-title" x="154" y="127">观察问题</text><text class="node-num" x="442" y="96">02</text><text class="node-title" x="442" y="127">分析原因</text><text class="node-num" x="442" y="328">03</text><text class="node-title" x="442" y="359">制定方案</text><text class="node-num on-accent" x="154" y="328">04</text><text class="node-title on-accent" x="154" y="359">执行验证</text><text class="center-title" x="300" y="215">持续迭代</text><text class="node-note" x="300" y="248">让反馈推动下一步</text></g>
+          </svg>
+          <svg class="diagram diagram-mobile" viewBox="0 0 320 420" role="img" aria-labelledby="flow-mobile-title">
+            <title id="flow-mobile-title">观察、分析、制定方案、执行验证，循环回到观察</title>
+            <defs><marker id="flow-mobile-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L6 4L1 7" fill="none" stroke="var(--color-secondary)" stroke-width="1.5"/></marker></defs>
+            <g class="connector" marker-end="url(#flow-mobile-arrow)"><path d="M143 80H177"/><path d="M240 144V257"/><path d="M177 320H143"/><path d="M80 257V144"/></g>
+            <circle class="node" cx="80" cy="80" r="60" fill="var(--color-beige)"/><circle class="node" cx="240" cy="80" r="60" fill="var(--color-pink)"/><circle class="node" cx="240" cy="320" r="60" fill="var(--color-blue)"/><circle class="node" cx="80" cy="320" r="60" fill="var(--color-accent)"/>
+            <g text-anchor="middle"><text class="node-num" x="80" y="73">01</text><text class="node-title" x="80" y="104">观察问题</text><text class="node-num" x="240" y="73">02</text><text class="node-title" x="240" y="104">分析原因</text><text class="node-num" x="240" y="313">03</text><text class="node-title" x="240" y="344">制定方案</text><text class="node-num on-accent" x="80" y="313">04</text><text class="node-title on-accent" x="80" y="344">执行验证</text><text class="center-title" x="160" y="198">持续迭代</text><text class="node-note" x="160" y="226">让反馈推动下一步</text></g>
+          </svg>
+        </article>
+        <article class="panel" aria-label="F 信息关系模块">
+          <div class="panel-top"><h3 class="section-pill">信息关系</h3></div>
+          <h4 class="panel-title">把信息，组织成判断</h4>
+          <p class="panel-description">输入汇聚为判断，再通向行动；箭头表达实际关系。</p>
+          <svg class="diagram" viewBox="0 0 600 440" role="img" aria-labelledby="relation-title relation-desc">
+            <title id="relation-title">三类输入形成判断并导向行动的信息关系</title><desc id="relation-desc">事实数据、实际情境、已有经验分别输入核心判断。核心判断输出行动方案。</desc>
+            <defs><marker id="relation-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L6 4L1 7" fill="none" stroke="var(--color-secondary)" stroke-width="1.5"/></marker></defs>
+            <g class="connector" marker-end="url(#relation-arrow)"><path d="M300 119V153"/><path d="M162 228H219"/><path d="M438 228H381"/><path d="M300 307V354"/></g>
+            <circle class="node" cx="300" cy="64" r="49" fill="var(--color-blue)"/><circle class="node" cx="104" cy="228" r="52" fill="var(--color-beige)"/><circle class="node" cx="496" cy="228" r="52" fill="var(--color-pink)"/><circle class="node" cx="300" cy="228" r="72" fill="var(--color-accent)"/><rect class="node" x="220" y="362" width="160" height="56" rx="28" fill="var(--color-surface)"/>
+            <g text-anchor="middle"><text class="node-title" x="300" y="72">事实数据</text><text class="node-title" x="104" y="236">实际情境</text><text class="node-title" x="496" y="236">已有经验</text><text class="center-title on-accent" x="300" y="236">核心判断</text><text class="node-title" x="300" y="397">行动方案</text><text class="line-label" x="343" y="143">输入</text><text class="line-label" x="344" y="338">输出</text></g>
+          </svg>
+          <svg class="diagram diagram-mobile" viewBox="0 0 320 420" role="img" aria-labelledby="relation-mobile-title">
+            <title id="relation-mobile-title">事实数据、实际情境、已有经验输入核心判断，输出行动方案</title>
+            <defs><marker id="relation-mobile-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L6 4L1 7" fill="none" stroke="var(--color-secondary)" stroke-width="1.5"/></marker></defs>
+            <g class="connector" marker-end="url(#relation-mobile-arrow)"><path d="M55 110V145L113 188"/><path d="M160 110V168"/><path d="M265 110V145L207 188"/><path d="M160 298V351"/></g>
+            <circle class="node" cx="55" cy="62" r="43" fill="var(--color-blue)"/><circle class="node" cx="160" cy="62" r="43" fill="var(--color-beige)"/><circle class="node" cx="265" cy="62" r="43" fill="var(--color-pink)"/><circle class="node" cx="160" cy="234" r="60" fill="var(--color-accent)"/><rect class="node" x="76" y="360" width="168" height="56" rx="28" fill="var(--color-surface)"/>
+            <g text-anchor="middle"><text class="node-title" x="55" y="57"><tspan x="55">事实</tspan><tspan x="55" dy="28">数据</tspan></text><text class="node-title" x="160" y="57"><tspan x="160">实际</tspan><tspan x="160" dy="28">情境</tspan></text><text class="node-title" x="265" y="57"><tspan x="265">已有</tspan><tspan x="265" dy="28">经验</tspan></text><text class="center-title on-accent" x="160" y="243">核心判断</text><text class="node-title" x="160" y="395">行动方案</text><text class="line-label" x="198" y="330">输出</text></g>
+          </svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="material" aria-labelledby="material-title">
+      <div class="section-heading"><h2 id="material-title"><span>05</span>质感与编排</h2><p>Material & Composition</p></div>
+      <div class="material-layout">
+        <article><h3>精致，来自克制。</h3><div class="materials"><div class="material-item"><div class="material-block"></div><p>纯色底</p><small>干净、温和</small></div><div class="material-item"><div class="material-block"><i class="soft-disc"></i></div><p>柔和色块</p><small>区分信息</small></div><div class="material-item"><div class="material-block"><i class="geometry"></i><i class="geometry-disc"></i></div><p>清晰几何</p><small>边界明确</small></div><div class="material-item"><div class="material-block"><i class="raised"></i></div><p>轻微层次</p><small>不抢主体</small></div></div>
+          <div class="states" aria-label="状态颜色示意"><span class="chip state-idle">待开始</span><span class="chip state-info">进行中</span><span class="chip state-attention">需关注</span><span class="chip state-complete"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>已完成</span></div>
+        </article>
+        <article><h3>共享网格，自由构图。</h3><div class="layout-grid" aria-label="十二列网格示意"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="layout-notes"><p><strong>对齐形成秩序</strong>标题、图形、标签共享边界。</p><p><strong>留白区分层级</strong>组内紧凑，组间舒展。</p><p><strong>一个明确焦点</strong>每组信息都有阅读起点。</p><p><strong>比例随内容变化</strong>允许非对称，避免机械均分。</p></div></article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><p>此页为视觉语言预览，示例数据均为虚构。最终视觉效果等待用户确认。</p><div class="footer-links"><a href="DESIGN-SYSTEM.md">完整规范</a><a href="tokens.css">设计变量</a><a href="FONT-LICENSES.md">字体与授权</a></div></footer>
+</body>
+</html>

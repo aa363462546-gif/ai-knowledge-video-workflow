@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C · 对象连续与焦点交接</title>
+  <script src="../gsap-3.14.2.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #e9eef1; color: #172b3a; font-family: system-ui, "PingFang SC", sans-serif; }
+    main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 48px; }
+    h1 { margin: 0 0 10px; font-size: 28px; font-weight: 650; }
+    .intro, .note { max-width: 850px; font-size: 16px; line-height: 1.8; }
+    .intro { margin: 0 0 22px; }
+    .viewport { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #f6f8fa; }
+    /* 960×540 only describes this teaching composition, not a production rule. */
+    #stage { position: absolute; width: 960px; height: 540px; overflow: hidden; transform-origin: 0 0; color: #172b3a; }
+    #stage h2, #stage h3, #stage p { margin: 0; }
+    #topic { position: absolute; left: 48px; top: 42px; width: 500px; height: 52px; font-size: 36px; line-height: 1.3; font-weight: 600; letter-spacing: -1px; transform-origin: 0 0; }
+    #focus-field { position: absolute; left: 430px; top: 140px; width: 570px; height: 340px; background: #1c4b6b; }
+    #artifact { position: absolute; left: 72px; top: 208px; width: 250px; height: 156px; transform-origin: 0 0; }
+    #artifact svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    #artifact h3 { position: absolute; left: 25px; top: 43px; width: 200px; height: 76px; font-size: 61px; line-height: 1.2; font-weight: 550; }
+    #organization { position: absolute; inset: 0; }
+    .view { position: absolute; top: 231px; width: 180px; height: 148px; color: #fff; transform-origin: 0 0; }
+    #theme { left: 510px; }
+    #chronology { left: 730px; }
+    .view h3 { font-size: 58px; line-height: 1.2; font-weight: 550; letter-spacing: -2px; }
+    .view p { margin-top: 16px !important; font-size: 24px; line-height: 1.4; color: #eef4f8; }
+    #result { position: absolute; left: 48px; top: 469px; width: 530px; height: 45px; font-size: 25px; line-height: 1.5; }
+    .masked { clip-path: inset(100% 0 0 0); }
+    .controls { display: flex; align-items: center; gap: 14px; padding: 18px 0 4px; }
+    button { border: 0; background: #1c4b6b; color: #fff; padding: 11px 18px; font: inherit; cursor: pointer; }
+    input { flex: 1; min-width: 70px; accent-color: #1c4b6b; }
+    output { min-width: 105px; font-size: 14px; font-variant-numeric: tabular-nums; }
+    .note { margin: 18px 0 0; }
+    a { color: #1c4b6b; text-underline-offset: 3px; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #267b9d; outline-offset: 4px; }
+    @media (max-width: 600px) { main { padding: 22px 12px; } .controls { gap: 8px; } button { padding: 10px; } h1 { font-size: 23px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>C · 对象移动、重组与焦点交接</h1>
+    <p class="intro">观察同一个标题如何收敛、同一批对象如何改变主次。本页只演示技术，没有音频、SRT或成片输出；“主题／时间”是示意分组方式，不是效率比较。</p>
+    <div class="viewport">
+      <div id="stage" aria-label="同一份资料及两个组织视角的动态演示">
+        <div id="focus-field"></div>
+        <h2 id="topic">同一份资料</h2>
+        <div id="artifact" class="masked">
+          <svg viewBox="0 0 250 156" aria-hidden="true"><path d="M0 0H218L250 32V156H0Z" fill="#fff"/><path d="M218 0V32H250" fill="#d4e5ef"/><path d="M0 0H10V156H0Z" fill="#1c4b6b"/></svg>
+          <h3>资料</h3>
+        </div>
+        <div id="organization">
+          <section id="theme" class="view masked"><h3>主题</h3><p>按类别组织</p></section>
+          <section id="chronology" class="view masked"><h3>时间</h3><p>按先后组织</p></section>
+        </div>
+        <p id="result" class="masked">同一对象，两个组织视角</p>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="play" type="button">播放</button>
+      <button id="restart" type="button">回到开头</button>
+      <input id="seek" type="range" min="0" max="8.4" step="0.001" value="0" aria-label="演示时间">
+      <output id="time">0.00 / 8.40</output>
+    </div>
+    <p class="note">示例播放器只向画面传入时间。正式口播预览应改由真实音频的 <code>currentTime</code> 供时；画面自身仍调用同一个 <code>renderAtTime(t)</code>。可任意拖动、倒回或重复定位。</p>
+    <p class="note">系统字体未锁定，跨平台字形可能不同。<a href="c-object-continuity.js">查看动画源码</a> · <a href="a-simple-information.html">示例 A</a> · <a href="b-comparison.html">示例 B</a></p>
+  </main>
+  <script src="c-object-continuity.js"></script>
+  <script>
+    // Player only: this clock is outside the renderable animation state.
+    // Replace its time source with audio.currentTime for a real narrated preview.
+    (() => {
+      const stage = document.querySelector('#stage');
+      const viewport = document.querySelector('.viewport');
+      const play = document.querySelector('#play');
+      const range = document.querySelector('#seek');
+      const output = document.querySelector('#time');
+      const duration = Number(range.max);
+      let current = 0, playing = false, started = 0, startTime = 0, request = 0;
+      const fit = () => { stage.style.transform = `scale(${viewport.clientWidth / 960})`; };
+      const draw = time => {
+        current = window.renderAtTime(time);
+        range.value = current;
+        output.value = `${current.toFixed(2)} / ${duration.toFixed(2)}`;
+      };
+      const pause = () => { playing = false; play.textContent = '播放'; cancelAnimationFrame(request); };
+      const tick = wallTime => {
+        if (!playing) return;
+        draw(startTime + (wallTime - started) / 1000);
+        if (current >= duration) { pause(); return; }
+        request = requestAnimationFrame(tick);
+      };
+      play.addEventListener('click', () => {
+        if (playing) { pause(); return; }
+        if (current >= duration) draw(0);
+        playing = true; play.textContent = '暂停';
+        started = performance.now(); startTime = current;
+        request = requestAnimationFrame(tick);
+      });
+      range.addEventListener('input', () => { pause(); draw(Number(range.value)); });
+      document.querySelector('#restart').addEventListener('click', () => { pause(); draw(0); });
+      addEventListener('resize', fit);
+      fit(); draw(0);
+    })();
+  </script>
+</body>
+</html>

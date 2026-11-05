@@ -1,0 +1,84 @@
+/* 商业编辑视觉系统 · v1。颜色、字形与材质固定；构图由内容决定。 */
+@font-face {
+  font-family: 'Source Han Sans SC';
+  src: url('assets/fonts/SourceHanSansSC-VF.ttf.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 250 900;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/InterVariable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+}
+:root {
+  --color-paper: #F7F6F2;
+  --color-ink: #171717;
+  --color-accent: #C44D36;
+  --color-gray: #9CA3AF;
+  --color-beige: #E8E1D9;
+  --color-pink: #FAD9D4;
+  --color-blue: #A7C7E7;
+
+  /* 衍生中性色与小字深红：首版候选，详见规范。 */
+  --color-surface: #F0EEEA;
+  --color-secondary: #514E49;
+  --color-line: #D8D5CF;
+  --color-rule: #AAA79F;
+  --color-accent-text: #A63825;
+  --color-on-accent: #FFFFFF;
+
+  --chart-base: var(--color-gray);
+  --chart-focus: var(--color-accent);
+  --chart-grid: var(--color-line);
+  --chart-label: var(--color-ink);
+  --chart-series-2: var(--color-blue);
+  --chart-series-3: var(--color-beige);
+  --state-idle-bg: var(--color-surface);
+  --state-info-bg: var(--color-blue);
+  --state-attention-bg: var(--color-pink);
+  --state-complete-bg: var(--color-beige);
+  --state-text: var(--color-ink);
+
+  /* Inter 优先命中英文/数字；中文按字形回退到本地思源黑体。 */
+  --font-cn: 'Source Han Sans SC', 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-latin: 'Inter', sans-serif;
+  --font-text: 'Inter', 'Source Han Sans SC', 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-heavy: 800;
+  --text-display: 72px;
+  --text-title: 44px;
+  --text-heading: 28px;
+  --text-body: 20px;
+  --text-note: 16px;
+  --text-metric: 76px;
+  --leading-title: 1.2;
+  --leading-body: 1.6;
+  --tracking-title: -0.025em;
+  --tracking-latin: -0.035em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --radius-panel: 8px;
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --stroke-thin: 1px;
+  --stroke-diagram: 1.5px;
+  --shadow-soft: 0 7px 18px rgb(23 23 23 / 7%);
+  --highlight-soft: inset 0 1px 1px rgb(255 255 255 / 55%);
+  --content-max: 1360px;
+  --grid-columns: 12;
+  --grid-gutter: 24px;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "ai-knowledge-video-workflow",
+  "version": "1.0.0",
+  "description": "AI-guided automated visual motion video creation pipeline from voiceover audio and SRT subtitles",
+  "type": "module",
+  "main": "scripts/video_pipeline.mjs",
+  "scripts": {
+    "check-env": "node scripts/check_env.mjs",
+    "verify-env": "node scripts/check_env.mjs --verify",
+    "test": "node --test scripts/video_pipeline.test.mjs"
+  },
+  "keywords": [
+    "ai-video",
+    "hyperframes",
+    "gsap",
+    "motion-graphics",
+    "knowledge-video",
+    "video-generation"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "hyperframes": "0.8.175",
+    "puppeteer-core": "^23.0.0"
+  }
+}
